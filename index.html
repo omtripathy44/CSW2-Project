@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Perfume Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-dark text-white d-flex align-items-center justify-content-center vh-100">
+  <div class="card p-4 bg-secondary" style="width: 350px;">
+    <h3 class="text-center mb-3 text-light">Login to Perfume Boutique</h3>
+    <form id="loginForm">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" required />
+      </div>
+      <button type="submit" class="btn btn-warning w-100">Login</button>
+    </form>
+    <div id="loginError" class="text-danger text-center mt-2 d-none">Invalid login.</div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $('#loginForm').on('submit', function (e) {
+      e.preventDefault();
+      const user = $('#username').val();
+      const pass = $('#password').val();
+
+      // Hardcoded simple auth
+      if (user === 'admin' && pass === 'admin123') {
+        localStorage.setItem('loggedIn', 'true');
+        window.location.href = 'shop.html';
+      } else {
+        $('#loginError').removeClass('d-none');
+      }
+    });
+  </script>
+</body>
+</html>
